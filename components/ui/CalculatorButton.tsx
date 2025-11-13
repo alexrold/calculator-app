@@ -1,13 +1,11 @@
 import {Colors} from '@/constants/Colors';
+import {GAP_SIZE} from '@/constants/Spacing';
 import {globalStyles} from '@/styles/global-styles';
 import React from 'react';
 
 import {Pressable, Text, TextStyle, ViewStyle} from 'react-native';
 
-/**
- * Define las variantes de estilo visual para el botón.
- */
-export type ButtonVariant = 'operator' | 'function' | 'number';
+import type {ButtonVariant} from '@/types/ui';
 
 /**
  * Define las props que espera el componente CalculatorButton.
@@ -18,6 +16,7 @@ interface Props {
   onPress: () => void;
   size: number;
   double?: boolean;
+  isLast?: boolean;
 }
 
 /**
@@ -30,11 +29,11 @@ const CalculatorButton = ({
   onPress,
   size,
   double = false,
+  isLast = false,
 }: Props) => {
   let backgroundColor: string;
   let textColor: string;
   let buttonMarginRight: number;
-  const GAP_SIZE = 14;
 
   switch (variant) {
     case 'operator':
@@ -45,13 +44,13 @@ const CalculatorButton = ({
     case 'function':
       backgroundColor = Colors.lightGray;
       textColor = Colors.darkGray;
-      buttonMarginRight = GAP_SIZE;
+      buttonMarginRight = isLast ? 0 : GAP_SIZE;
       break;
     case 'number':
     default:
       backgroundColor = Colors.darkGray;
       textColor = Colors.textPrimary;
-      buttonMarginRight = GAP_SIZE;
+      buttonMarginRight = isLast ? 0 : GAP_SIZE;
       break;
   }
 
@@ -68,12 +67,11 @@ const CalculatorButton = ({
   const textDynamicStyle: TextStyle = {
     color: textColor,
     // Fuente responsive (proporcional al botón)
-    fontSize: size * 0.3, // (Ajusta si quieres cambiar el tamaño)
+    fontSize: size * 0.3, // (Ajustar para cambiar el tamaño)
   };
 
   return (
     <Pressable
-      // Combinamos los estilos globales, los dinámicos y los de 'pressed'
       style={({pressed}) => [
         globalStyles.button, // Estilos base (borderRadius, margin)
         buttonDynamicStyle, // 'width' y 'height' dinámicos
@@ -84,7 +82,6 @@ const CalculatorButton = ({
       ]}
       onPress={onPress}
     >
-      {/* Combinamos los estilos de texto globales y los dinámicos */}
       <Text style={[globalStyles.buttonText, textDynamicStyle]}>{label}</Text>
     </Pressable>
   );

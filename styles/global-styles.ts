@@ -1,4 +1,5 @@
 import {Colors} from '@/constants/Colors';
+import {CONTAINER_PADDING} from '@/constants/Spacing';
 import {StyleSheet} from 'react-native';
 
 export const globalStyles = StyleSheet.create({
@@ -9,7 +10,7 @@ export const globalStyles = StyleSheet.create({
   calculatorContainer: {
     flex: 1,
     justifyContent: 'flex-end',
-    paddingHorizontal: 14,
+    paddingHorizontal: CONTAINER_PADDING,
   },
   mainResult: {
     color: Colors.textPrimary,
@@ -26,7 +27,7 @@ export const globalStyles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginBottom: 18,
   },
   button: {
