@@ -1,24 +1,38 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import {useFonts} from 'expo-font';
+import {Slot, SplashScreen} from 'expo-router';
+import {StatusBar} from 'expo-status-bar';
+import {useEffect} from 'react';
+import {View} from 'react-native';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import {globalStyles} from '@/styles/global-styles';
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+// Previene que la pantalla de carga (splash screen) se oculte sola
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  // Carga las fuentes
+  const [fontsLoaded, fontError] = useFonts({
+    SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
+  });
+
+  // Espera a que se carguen las fuentes
+  useEffect(() => {
+    if (fontsLoaded || fontError) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <View style={globalStyles.background}>
+      <Slot />
+      {/* <Stack>
+        <Stack.Screen name="index" options={{headerShown: false}} />
+      </Stack> */}
+      <StatusBar style="light" />
+    </View>
   );
 }
