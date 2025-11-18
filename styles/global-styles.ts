@@ -2,6 +2,10 @@ import {Colors} from '@/constants/Colors';
 import {CONTAINER_PADDING} from '@/constants/Spacing';
 import {StyleSheet} from 'react-native';
 
+/**
+ * Hoja de estilos global para la aplicación.
+ * Contiene los estilos base para los componentes principales.
+ */
 export const globalStyles = StyleSheet.create({
   background: {
     flex: 1,

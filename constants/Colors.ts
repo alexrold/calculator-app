@@ -1,3 +1,6 @@
+/**
+ * Paleta de colores centralizada para la aplicación.
+ */
 export const Colors = {
   darkGray: '#2D2D2D',
   lightGray: '#989B9B',

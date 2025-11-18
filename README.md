@@ -1,4 +1,6 @@
-# Welcome to your Expo app 👋
+# Calculator App
+
+This is a simple calculator application built with React Native and Expo. It features basic arithmetic operations, chained calculations, sign toggling, digit deletion, and robust error handling for division by zero.
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
@@ -7,13 +9,19 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 1. Install dependencies
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 2. Start the app
 
    ```bash
    npx expo start
+   ```
+
+3. Run tests
+
+   ```bash
+   pnpm test
    ```
 
 In the output, you'll find options to open the app in a

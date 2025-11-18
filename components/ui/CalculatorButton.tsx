@@ -7,8 +7,10 @@ import {Pressable, Text, TextStyle, ViewStyle} from 'react-native';
 
 import type {ButtonVariant} from '@/types/ui';
 
+import * as Haptics from 'expo-haptics';
+
 /**
- * Define las props que espera el componente CalculatorButton.
+ * Props para el componente CalculatorButton.
  */
 interface Props {
   label: string;
@@ -20,8 +22,9 @@ interface Props {
 }
 
 /**
- * Botón de la calculadora que se auto-ajusta
- * al tamaño (size) calculado en la pantalla.
+ * Botón personalizable para la calculadora.
+ * Se ajusta dinámicamente en tamaño y estilo según las props.
+ * @param {Props} props - Las propiedades del componente.
  */
 const CalculatorButton = ({
   label,
@@ -80,7 +83,10 @@ const CalculatorButton = ({
           opacity: pressed ? 0.8 : 1, // Tu efecto de opacidad
         },
       ]}
-      onPress={onPress}
+      onPress={() => {
+        Haptics.selectionAsync(); // Feedback háptico
+        onPress(); // Lógica del botón
+      }}
     >
       <Text style={[globalStyles.buttonText, textDynamicStyle]}>{label}</Text>
     </Pressable>

@@ -1,3 +1,8 @@
+/**
+ * Define la estructura y el layout de los botones de la calculadora.
+ * Este archivo centraliza la configuración de cómo se ven y se organizan los botones.
+ */
+
 import type {ButtonVariant} from '@/types/ui';
 
 export const ROWS_COUNT = 5;

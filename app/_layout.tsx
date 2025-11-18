@@ -3,7 +3,9 @@ import {useFonts} from 'expo-font';
 import {Slot, SplashScreen} from 'expo-router';
 import {StatusBar} from 'expo-status-bar';
 import {useEffect} from 'react';
-import {View} from 'react-native';
+import {Platform, View} from 'react-native';
+
+import * as NavigationBar from 'expo-navigation-bar';
 
 // Previene que la pantalla de carga (splash screen) se oculte sola
 SplashScreen.preventAutoHideAsync();
@@ -21,6 +23,15 @@ export default function RootLayout() {
     }
   }, [fontsLoaded, fontError]);
 
+  // Configuración de la barra de navegación
+  useEffect(() => {
+    const isAndroid = Platform.OS === 'android';
+    if (isAndroid) {
+      NavigationBar.setButtonStyleAsync('light');
+    }
+  }, []);
+
+  // Si las fuentes no están listas, no renderiza nada (la splash screen sigue visible)
   if (!fontsLoaded && !fontError) {
     return null;
   }
@@ -28,9 +39,6 @@ export default function RootLayout() {
   return (
     <View style={globalStyles.background}>
       <Slot />
-      {/* <Stack>
-        <Stack.Screen name="index" options={{headerShown: false}} />
-      </Stack> */}
       <StatusBar style="light" />
     </View>
   );

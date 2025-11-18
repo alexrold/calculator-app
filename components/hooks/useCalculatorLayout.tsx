@@ -16,6 +16,12 @@ import {useMemo} from 'react';
 import {useWindowDimensions, type ViewStyle} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
+/**
+ * Hook para calcular el layout dinámico de la calculadora.
+ * Determina el tamaño de los botones y el estilo de las filas
+ * basándose en las dimensiones de la pantalla y los insets.
+ * @returns Un objeto con las propiedades de layout calculadas.
+ */
 export default function useCalculatorLayout() {
   const {width: screenWidth, height: screenHeight} = useWindowDimensions();
   const insets = useSafeAreaInsets();

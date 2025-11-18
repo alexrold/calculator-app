@@ -1,3 +1,6 @@
+/**
+ * Constantes para espaciado, padding y tamaños en la UI.
+ */
 export const CONTAINER_PADDING = 14;
 export const GAP_SIZE = 14;
 
