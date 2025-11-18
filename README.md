@@ -44,3 +44,11 @@ Una aplicación de calculadora simple construida con React Native y Expo.
     ```
 
 Una vez iniciado el servidor, escanea el código QR con la aplicación Expo Go en tu teléfono o selecciona una de las opciones para abrirlo en un emulador.
+
+---
+
+## Autor
+
+**Ronald A Betancourt F**
+
+- GitHub: [@alexrold](https://github.com/alexrold)

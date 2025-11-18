@@ -2,6 +2,23 @@
   "name": "calculator-app",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "description": "A simple calculator application built with React Native and Expo.",
+  "author": {
+    "name": "Ronald A Betancourt F",
+    "email": "ronaldbetancourt.dev@gmail.com",
+    "github": "alexrold",
+    "url": "https://github.com/alexrold"
+  },
+  "license": "MIT",
+  "keywords": [
+    "react-native",
+    "expo",
+    "calculator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:alexrold/calculator-app.git"
+  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
